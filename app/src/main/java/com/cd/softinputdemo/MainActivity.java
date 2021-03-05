@@ -17,14 +17,11 @@ public class MainActivity extends AppCompatActivity {
         mIv = findViewById(R.id.iv);
         mEt2 = findViewById(R.id.et2);
         SoftInputUtil softInputUtil = new SoftInputUtil();
-        softInputUtil.attachSoftInput(mEt2, new SoftInputUtil.ISoftInputChanged() {
-            @Override
-            public void onChanged(boolean isSoftInputShow, int softInputHeight, int viewOffset) {
-                if (isSoftInputShow){
-                    mEt2.setTranslationY(mEt2.getTranslationY()-viewOffset);
-                }else {
-                    mEt2.setTranslationY(0);
-                }
+        softInputUtil.attachSoftInput(mEt2, (isSoftInputShow, softInputHeight, viewOffset) -> {
+            if (isSoftInputShow){
+                mEt2.setTranslationY(mEt2.getTranslationY()-viewOffset);
+            }else {
+                mEt2.setTranslationY(0);
             }
         });
     }
